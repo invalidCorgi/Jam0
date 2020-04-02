@@ -8,6 +8,8 @@ public class CraftingManager : MonoBehaviour
 {
     public GameObject gamePanel;
     public GameObject winPanel;
+    public GameObject timerObject;
+    public Image inventoryImage;
     public Image ResultImage;
     public Image Resource1;
     public Image Resource2;
@@ -16,6 +18,7 @@ public class CraftingManager : MonoBehaviour
 
     private CraftingConstants.Recipe recipe;
     private List<CraftingConstants.Resource> availableResources;
+    private List<CraftingConstants.Resource> inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +34,10 @@ public class CraftingManager : MonoBehaviour
         { 
             CraftingConstants.Resource.Bananana, 
             CraftingConstants.Resource.Bunny, 
-            CraftingConstants.Resource.Chocolate,
-            //CraftingConstants.Resource.Hammer,
-            //CraftingConstants.Resource.Tubes,
-            //CraftingConstants.Resource.Cable,
-            //CraftingConstants.Resource.HamsterReel
+            CraftingConstants.Resource.Chocolate
         };
+
+        inventory = new List<CraftingConstants.Resource>();
 
         FindAndSetNewRecipe();
     }
@@ -57,6 +58,7 @@ public class CraftingManager : MonoBehaviour
     {
         for (int i = 0; i < ResourceImages.Count; i++)
         {
+            ResourceImages[i].transform.parent.gameObject.GetComponent<Image>().color = Color.red;
             ResourceImages[i].transform.parent.gameObject.SetActive(true);
         }
 
@@ -71,6 +73,7 @@ public class CraftingManager : MonoBehaviour
         if(recipe == default)
         {
             gamePanel.SetActive(false);
+            inventoryImage.gameObject.SetActive(false);
             winPanel.SetActive(true);
             return;
         }
@@ -88,14 +91,24 @@ public class CraftingManager : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void TryAddNewItemToInventory(CraftingConstants.Resource resource)
     {
-        FinishCrafting();
-        //Debug.Log("heh");
-        //collision.gameObject;
-        /*foreach (ContactPoint contact in collision.contacts)
+        if(recipe.Resources[inventory.Count] == resource)
         {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }*/
+            if(recipe.Resources.Length - 1 == inventory.Count)
+            {
+                inventory.Clear();
+                FinishCrafting();
+            }
+            else
+            {
+                ResourceImages[inventory.Count].transform.parent.gameObject.GetComponent<Image>().color = Color.green;
+                inventory.Add(resource);
+            }
+        }
+        else
+        {
+            timerObject.GetComponent<Timer>().effectiveRemainingTime -= 5;
+        }
     }
 }

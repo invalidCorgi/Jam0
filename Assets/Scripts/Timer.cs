@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private GameObject gameOverPanel;
     [SerializeField]
-    private GameObject winPanel;
+    private Image inventoryImage;
     private float startingWidth;
 
     public float effectiveRemainingTime;
@@ -33,9 +32,8 @@ public class Timer : MonoBehaviour
         if (effectiveRemainingTime < 0)
         {
             gamePanel.SetActive(false);
+            inventoryImage.gameObject.SetActive(false);
             gameOverPanel.SetActive(true);
         }
-
-        //Debug.Log(effectiveRemainingTime);
     }
 }

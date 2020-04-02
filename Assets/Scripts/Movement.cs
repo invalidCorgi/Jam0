@@ -22,14 +22,4 @@ public class Movement : MonoBehaviour
         if (transform.position.y < -1.5)
             transform.position = new Vector3(0, 0, 0);
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("heh");
-        //collision.gameObject;
-        /*foreach (ContactPoint contact in collision.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }*/
-    }
 }

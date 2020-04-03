@@ -5,19 +5,20 @@ using UnityEngine;
 public class SphereScript : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public CraftingConstants.Resource resource;
     public float moveSpeed = 200f;
     private float test = -1f;
     private float movingX;
     private float movingZ;
     private float movingY;
     private float time;
-    public GameObject Piecyk;
+    private GameObject Piecyk;
 
     private Rigidbody rbody;
 
     void Start()
     {
+        Piecyk = GameObject.Find("Piecyk");
         rbody = GetComponent<Rigidbody>();
         //test = Random.Range(-1f, 1f);
         //Debug.Log(test);
@@ -47,7 +48,7 @@ public class SphereScript : MonoBehaviour
         //}
         //else
         //{
-        if(time < 0)
+        if (time < 0)
         {
             rbody.AddForce(movingX * moveSpeed * Time.deltaTime, 1f, movingZ * moveSpeed * Time.deltaTime);
         }
@@ -80,14 +81,14 @@ public class SphereScript : MonoBehaviour
     {
         if (collision.collider.name == "Floor" && time < 0)
         {
-            if(gameObject.transform.position.y < 0.60)
+            if (gameObject.transform.position.y < 0.60)
             {
                 rbody.AddForce(movingX * moveSpeed * Time.deltaTime, 50, movingZ * moveSpeed * Time.deltaTime);
-                if(rbody.velocity.y>5)
+                if (rbody.velocity.y > 5)
                 {
                     rbody.velocity = new Vector3(rbody.velocity.x, 3, rbody.velocity.z);
                 }
-                if(rbody.velocity.x>6)
+                if (rbody.velocity.x > 6)
                 {
                     rbody.velocity = new Vector3(3, rbody.velocity.y, rbody.velocity.z);
                 }
@@ -95,7 +96,7 @@ public class SphereScript : MonoBehaviour
                 {
                     rbody.velocity = new Vector3(rbody.velocity.x, rbody.velocity.y, 3);
                 }
-                if(rbody.velocity.y < 0.5)
+                if (rbody.velocity.y < 0.5)
                 {
                     rbody.velocity = new Vector3(rbody.velocity.x, 3, rbody.velocity.z);
                 }
@@ -105,13 +106,19 @@ public class SphereScript : MonoBehaviour
             }
             //rbody.AddForce(movingX * moveSpeed * Time.deltaTime, 1, movingZ * moveSpeed * Time.deltaTime);
         }
-        if( collision.collider.name == "Player")
+        if (collision.collider.name == "Player")
         {
             //Destroy(gameObject);
-            transform.position = new Vector3(Piecyk.transform.position.x, Piecyk.transform.position.y, Piecyk.transform.position.z+1f);
-            rbody.velocity = new Vector3(0f, 0f, 10f);
-            time = 1.0f;
 
+            var playerStatus = collision.collider.gameObject.GetComponent<PlayerStatus>();
+            if (playerStatus.itemInHands == CraftingConstants.Resource.None)
+            {
+                //playerStatus.itemInHands = (CraftingConstants.Resource)((int)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(CraftingConstants.Resource)).Length));
+                playerStatus.itemInHands = resource;
+                transform.position = new Vector3(Piecyk.transform.position.x, Piecyk.transform.position.y, Piecyk.transform.position.z + 1f);
+                rbody.velocity = new Vector3(0f, 0f, 10f);
+                time = 1.0f;
+            }
         }
 
         movingX = Random.Range(-1f, 1f);

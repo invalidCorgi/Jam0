@@ -22,15 +22,13 @@ public class getItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (isInteraction.isInteractionPossible)
+        if (Input.GetKeyDown(KeyCode.Space) && playerStatus.itemInHands != CraftingConstants.Resource.None)
         {
-            if(playerStatus.itemInHands != CraftingConstants.Resource.None)
+            if (isInteraction.isInteractionPossible)
             {
-                //inventory.putItem(playerStatus.itemInHands);
                 craftingManager.TryAddNewItemToInventory(playerStatus.itemInHands);
-                playerStatus.itemInHands = CraftingConstants.Resource.None;
             }
+            playerStatus.itemInHands = CraftingConstants.Resource.None;
         }
     }
 }

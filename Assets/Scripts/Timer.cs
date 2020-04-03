@@ -27,7 +27,15 @@ public class Timer : MonoBehaviour
     {
         effectiveRemainingTime -= Time.deltaTime;
         var rt = gameObject.transform.GetComponent<RectTransform>();
+
+        var img = gameObject.GetComponent<Image>();
+
+        var ratio = effectiveRemainingTime / timeForLevel;
+
+        img.color = new Color(1 - ratio, ratio, 0);
+
         rt.sizeDelta = new Vector2(startingWidth * (effectiveRemainingTime/timeForLevel), rt.sizeDelta.y);
+
 
         if (effectiveRemainingTime < 0)
         {

@@ -74,7 +74,6 @@ public class CraftingManager : MonoBehaviour
     {
         for (int i = 0; i < ResourceImages.Count; i++)
         {
-            ResourceImages[i].transform.parent.gameObject.GetComponent<Image>().color = Color.red;
             ResourceImages[i].transform.parent.gameObject.SetActive(true);
         }
 
@@ -118,7 +117,7 @@ public class CraftingManager : MonoBehaviour
             }
             else
             {
-                ResourceImages[inventory.Count].transform.parent.gameObject.GetComponent<Image>().color = Color.green;
+                ResourceImages[inventory.Count].sprite = Resources.Load<Sprite>("Textures\\UI\\ItemsUI\\check");
                 inventory.Add(resource);
             }
         }

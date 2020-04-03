@@ -15,6 +15,10 @@ public class CraftingManager : MonoBehaviour
     public Image Resource2;
     public Image Resource3;
 
+    public Text ProgressText;
+    public Image ProgressImage;
+    public float targetProgressImageWidth;
+
     public GameObject Hammer;
     public GameObject Tube;
     public GameObject Cable;
@@ -45,6 +49,7 @@ public class CraftingManager : MonoBehaviour
 
         inventory = new List<CraftingConstants.Resource>();
 
+        UpdateProgressTextAndImage();
         FindAndSetNewRecipe();
     }
 
@@ -57,6 +62,7 @@ public class CraftingManager : MonoBehaviour
     public void FinishCrafting()
     {
         availableResources.Add(recipe.Result);
+        UpdateProgressTextAndImage();
 
         if (recipe.Result == CraftingConstants.Resource.Hammer)
             Hammer.SetActive(true);
@@ -125,5 +131,16 @@ public class CraftingManager : MonoBehaviour
         {
             timerObject.GetComponent<Timer>().effectiveRemainingTime -= 5;
         }
+    }
+
+    public void UpdateProgressTextAndImage()
+    {
+        var recipesCount = (float)CraftingConstants.Recipes.Length;
+        var recipesDone = (float)CraftingConstants.Recipes.Select(x => x.Result).Intersect(availableResources).Count();
+
+        ProgressText.text = $"{recipesDone} / {recipesCount}";
+
+        var rt = ProgressImage.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2((recipesDone / recipesCount) * targetProgressImageWidth, rt.sizeDelta.y);
     }
 }

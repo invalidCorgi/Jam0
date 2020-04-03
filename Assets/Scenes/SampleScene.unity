@@ -1758,6 +1758,9 @@ MonoBehaviour:
   Resource1: {fileID: 1242798984}
   Resource2: {fileID: 303854317}
   Resource3: {fileID: 1640218717}
+  ProgressText: {fileID: 0}
+  ProgressImage: {fileID: 0}
+  targetProgressImageWidth: 400
   Hammer: {fileID: 1044988097673291519}
   Tube: {fileID: 3061844515999796925}
   Cable: {fileID: 6443486370890627131}

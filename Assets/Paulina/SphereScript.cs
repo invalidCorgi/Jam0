@@ -12,13 +12,12 @@ public class SphereScript : MonoBehaviour
     private float movingZ;
     private float movingY;
     private float time;
-    private GameObject Piecyk;
+    public GameObject Piecyk;
 
     private Rigidbody rbody;
 
     void Start()
     {
-        Piecyk = GameObject.Find("Piecyk");
         rbody = GetComponent<Rigidbody>();
         //test = Random.Range(-1f, 1f);
         //Debug.Log(test);
@@ -60,12 +59,13 @@ public class SphereScript : MonoBehaviour
         //rbody.velocity.x;
         //rbody.velocity = new Vector3(movingX * moveSpeed * Time.deltaTime, 0, movingZ * moveSpeed * Time.deltaTime);
         //}
-        Debug.Log("X: " + transform.position.x + "Y: " + transform.position.y + "Z: " + transform.position.z);
+        //Debug.Log("X: " + transform.position.x + "Y: " + transform.position.y + "Z: " + transform.position.z);
 
     }
 
     private void OnEnable()
     {
+        Piecyk = GameObject.Find("Piecyk");
         movingX = Random.Range(-1f, 1f);
         movingZ = Random.Range(-1f, 1f);
         movingY = Random.Range(10f, 100f);
@@ -106,9 +106,11 @@ public class SphereScript : MonoBehaviour
             }
             //rbody.AddForce(movingX * moveSpeed * Time.deltaTime, 1, movingZ * moveSpeed * Time.deltaTime);
         }
+ 
         if (collision.collider.name == "Player")
         {
             //Destroy(gameObject);
+            Debug.Log("Bu!");
 
             var playerStatus = collision.collider.gameObject.GetComponent<PlayerStatus>();
             if (playerStatus.itemInHands == CraftingConstants.Resource.None)

@@ -14,6 +14,12 @@ public class CraftingManager : MonoBehaviour
     public Image Resource1;
     public Image Resource2;
     public Image Resource3;
+
+    public GameObject Hammer;
+    public GameObject Tube;
+    public GameObject Cable;
+    public GameObject HamsterReel;
+
     private List<Image> ResourceImages;
 
     private CraftingConstants.Recipe recipe;
@@ -51,6 +57,16 @@ public class CraftingManager : MonoBehaviour
     public void FinishCrafting()
     {
         availableResources.Add(recipe.Result);
+
+        if (recipe.Result == CraftingConstants.Resource.Hammer)
+            Hammer.SetActive(true);
+        if (recipe.Result == CraftingConstants.Resource.Tubes)
+            Tube.SetActive(true);
+        if (recipe.Result == CraftingConstants.Resource.Cable)
+            Cable.SetActive(true);
+        if (recipe.Result == CraftingConstants.Resource.HamsterReel)
+            HamsterReel.SetActive(true);
+
         FindAndSetNewRecipe();
     }
 

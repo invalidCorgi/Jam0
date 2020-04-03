@@ -14,6 +14,12 @@ public class CraftingManager : MonoBehaviour
     public Image Resource1;
     public Image Resource2;
     public Image Resource3;
+
+    public GameObject Hammer;
+    public GameObject Tube;
+    public GameObject Cable;
+    public GameObject HamsterReel;
+
     private List<Image> ResourceImages;
 
     private CraftingConstants.Recipe recipe;
@@ -51,6 +57,16 @@ public class CraftingManager : MonoBehaviour
     public void FinishCrafting()
     {
         availableResources.Add(recipe.Result);
+
+        if (recipe.Result == CraftingConstants.Resource.Hammer)
+            Hammer.SetActive(true);
+        if (recipe.Result == CraftingConstants.Resource.Tubes)
+            Tube.SetActive(true);
+        if (recipe.Result == CraftingConstants.Resource.Cable)
+            Cable.SetActive(true);
+        if (recipe.Result == CraftingConstants.Resource.HamsterReel)
+            HamsterReel.SetActive(true);
+
         FindAndSetNewRecipe();
     }
 
@@ -58,7 +74,6 @@ public class CraftingManager : MonoBehaviour
     {
         for (int i = 0; i < ResourceImages.Count; i++)
         {
-            ResourceImages[i].transform.parent.gameObject.GetComponent<Image>().color = Color.red;
             ResourceImages[i].transform.parent.gameObject.SetActive(true);
         }
 
@@ -102,7 +117,7 @@ public class CraftingManager : MonoBehaviour
             }
             else
             {
-                ResourceImages[inventory.Count].transform.parent.gameObject.GetComponent<Image>().color = Color.green;
+                ResourceImages[inventory.Count].sprite = Resources.Load<Sprite>("Textures\\UI\\ItemsUI\\check");
                 inventory.Add(resource);
             }
         }

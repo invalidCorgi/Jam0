@@ -27,6 +27,22 @@ public class rabbitController : MonoBehaviour
 
     void Movement()
     {
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+            transform.Rotate(0, -150 * Time.deltaTime, 0);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+            transform.Rotate(0, 150 * Time.deltaTime, 0);
+        }
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            transform.Rotate(0, 0, 0);
+        }
+
         if (controller.isGrounded)
         {
 
@@ -45,20 +61,7 @@ public class rabbitController : MonoBehaviour
                 moveDir = transform.TransformDirection(moveDir);
             }
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-                transform.Rotate(0, -150 * Time.deltaTime, 0);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-                transform.Rotate(0, 150 * Time.deltaTime, 0);
-            }
-            else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-            {
-                transform.Rotate(0, 0, 0);
-            }
+            
 
             if (Input.GetKeyDown(KeyCode.Space))
             {

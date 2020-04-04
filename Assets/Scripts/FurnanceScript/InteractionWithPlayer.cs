@@ -32,8 +32,8 @@ public class InteractionWithPlayer : MonoBehaviour
         float positionY = gameObject.transform.position.y;
         float positionZ = gameObject.transform.position.z;
 
-        return Mathf.Sqrt(Mathf.Pow(player.transform.position.x - positionX, 2)
-                + Mathf.Pow(player.transform.position.y - positionY, 2) 
-                + Mathf.Pow(player.transform.position.z - positionZ, 2));
+        return Mathf.Sqrt(Mathf.Pow((player.transform.position.x) - positionX, 2)
+                + Mathf.Pow((player.transform.position.y) - positionY, 2) 
+                + Mathf.Pow((player.transform.position.z) - positionZ, 2));
     }
 }

@@ -21,7 +21,10 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inHandsImage.sprite = Resources.Load<Sprite>(itemInHands.ToString());
+        if(itemInHands.ToString() == "None")
+            inHandsImage.sprite = Resources.Load<Sprite>("Textures\\UI\\ItemsUI\\smallItemBoxBackground");
+        else
+            inHandsImage.sprite = Resources.Load<Sprite>(itemInHands.ToString());
         x = gameObject.transform.position.x;
         y = gameObject.transform.position.y;
         z = gameObject.transform.position.z;

@@ -57,6 +57,11 @@ public class SphereScript : MonoBehaviour
         {
             rbody.velocity = new Vector3(rbody.velocity.x, 3, rbody.velocity.z);
         }
+
+        if (gameObject.transform.position.y < -5)
+        {
+            gameObject.transform.position = new Vector3(Piecyk.transform.position.x, Piecyk.transform.position.y + 10, Piecyk.transform.position.z);
+        }
         //Debug.Log("VELX: " + rbody.velocity.x + " Y: " + rbody.velocity.y + " Z: " + rbody.velocity.z);
         //rbody.velocity.x;
         //rbody.velocity = new Vector3(movingX * moveSpeed * Time.deltaTime, 0, movingZ * moveSpeed * Time.deltaTime);

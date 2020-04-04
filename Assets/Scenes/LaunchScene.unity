@@ -362,7 +362,10 @@ MonoBehaviour:
 
     Movement: W,S,A,D
 
-    Action: Space'
+    Jump: Space
+
+    Release item: Left
+    Shift'
 --- !u!222 &1121967530
 CanvasRenderer:
   m_ObjectHideFlags: 0

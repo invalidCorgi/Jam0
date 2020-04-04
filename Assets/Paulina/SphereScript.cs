@@ -71,7 +71,8 @@ public class SphereScript : MonoBehaviour
         movingY = Random.Range(10f, 100f);
         time = 1.0f;
         rbody = GetComponent<Rigidbody>();
-        transform.position = new Vector3(Piecyk.transform.position.x, Piecyk.transform.position.y, Piecyk.transform.position.z + 1f);
+        if(Piecyk != null)
+            transform.position = new Vector3(Piecyk.transform.position.x, Piecyk.transform.position.y, Piecyk.transform.position.z + 1f);
         rbody.velocity = new Vector3(0f, 0f, 10f);
         time = 1.0f;
 

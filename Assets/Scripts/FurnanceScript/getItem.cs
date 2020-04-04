@@ -22,7 +22,7 @@ public class getItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerStatus.itemInHands != CraftingConstants.Resource.None)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && playerStatus.itemInHands != CraftingConstants.Resource.None)
         {
             if (isInteraction.isInteractionPossible)
             {

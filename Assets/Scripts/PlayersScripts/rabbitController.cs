@@ -5,9 +5,8 @@ using UnityEngine;
 public class rabbitController : MonoBehaviour
 {
     float speed = 10;
-    float rotSpeed = 0.0000000001f;
-    float gravity = 8;
-    float rot = 0f;
+    float gravity = 12;
+    float jumpSpeed = 5;
 
     Vector3 moveDir = Vector3.zero;
 
@@ -28,42 +27,50 @@ public class rabbitController : MonoBehaviour
 
     void Movement()
     {
-        //if (controller.isGrounded)
-        //{
+        if (controller.isGrounded)
+        {
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            anim.SetInteger("condition", 1);
-            moveDir = Vector3.forward;
-            moveDir *= speed;
-            moveDir = transform.TransformDirection(moveDir);
+            if (Input.GetKey(KeyCode.W))
+            {
+                anim.SetInteger("condition", 1);
+                moveDir = Vector3.forward;
+                moveDir *= speed;
+                moveDir = transform.TransformDirection(moveDir);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                anim.SetInteger("condition", 1);
+                moveDir = new Vector3(0, 0, -1);
+                moveDir *= speed;
+                moveDir = transform.TransformDirection(moveDir);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+                transform.Rotate(0, -150 * Time.deltaTime, 0);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+                transform.Rotate(0, 150 * Time.deltaTime, 0);
+            }
+            else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+            {
+                transform.Rotate(0, 0, 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                moveDir.y = jumpSpeed;
+            }
+
         }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            anim.SetInteger("condition", 1);
-            moveDir = new Vector3(0, 0, -1);
-            moveDir *= speed;
-            moveDir = transform.TransformDirection(moveDir);
-        }
-        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
         {
             anim.SetInteger("condition", 0);
             moveDir = new Vector3(0, 0, 0);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-            transform.Rotate(0, -1, 0);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-            transform.Rotate(0, 1, 0);
-        }
-        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-        {
-            transform.Rotate(0, 0, 0);
         }
 
         //rot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;

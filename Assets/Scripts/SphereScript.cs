@@ -52,6 +52,11 @@ public class SphereScript : MonoBehaviour
         {
             time -= Time.deltaTime;
         }
+
+        if(Mathf.Abs(rbody.velocity.x) + Mathf.Abs(rbody.velocity.y) + Mathf.Abs(rbody.velocity.z) < 1)
+        {
+            rbody.velocity = new Vector3(rbody.velocity.x, 3, rbody.velocity.z);
+        }
         //Debug.Log("VELX: " + rbody.velocity.x + " Y: " + rbody.velocity.y + " Z: " + rbody.velocity.z);
         //rbody.velocity.x;
         //rbody.velocity = new Vector3(movingX * moveSpeed * Time.deltaTime, 0, movingZ * moveSpeed * Time.deltaTime);
@@ -67,7 +72,8 @@ public class SphereScript : MonoBehaviour
         movingZ = Random.Range(-1f, 1f);
         time = 1.0f;
         rbody = GetComponent<Rigidbody>();
-        transform.position = new Vector3(Piecyk.transform.position.x, Piecyk.transform.position.y, Piecyk.transform.position.z + 1f);
+        if (Piecyk != null)
+            transform.position = new Vector3(Piecyk.transform.position.x, Piecyk.transform.position.y, Piecyk.transform.position.z + 1f);
         rbody.velocity = new Vector3(0f, 0f, 10f);
         time = 1.0f;
 

@@ -6936,7 +6936,6 @@ GameObject:
   - component: {fileID: 1916933850}
   - component: {fileID: 1916933855}
   - component: {fileID: 1916933854}
-  - component: {fileID: 1916933853}
   - component: {fileID: 1916933852}
   - component: {fileID: 1916933851}
   m_Layer: 0
@@ -6990,20 +6989,6 @@ MonoBehaviour:
   z: 0
   itemInHands: 0
   inHandsImage: {fileID: 1208931423}
---- !u!136 &1916933853
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916933849}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.38
-  m_Height: 1.98
-  m_Direction: 1
-  m_Center: {x: 0.07, y: 0.9, z: 0}
 --- !u!143 &1916933854
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7037,7 +7022,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!1 &1930630901
 GameObject:
   m_ObjectHideFlags: 0
@@ -7502,20 +7487,6 @@ MonoBehaviour:
   z: 0
   itemInHands: 0
   inHandsImage: {fileID: 0}
---- !u!136 &2026483728
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2026483724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 1.9
-  m_Height: 9.96
-  m_Direction: 1
-  m_Center: {x: -0.37, y: 2.93, z: 25.19}
 --- !u!143 &2026483729
 CharacterController:
   m_ObjectHideFlags: 0

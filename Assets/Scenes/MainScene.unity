@@ -2370,7 +2370,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114149398}
-        m_MethodName: StartGame
+        m_MethodName: StartGameWithoutCinamatic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19799,7 +19799,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1576623129}
-        m_MethodName: StartGame
+        m_MethodName: StartGameWithoutCinamatic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

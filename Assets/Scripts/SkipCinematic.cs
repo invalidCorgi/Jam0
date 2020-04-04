@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Launcher : MonoBehaviour
+public class SkipCinematic : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,16 +14,7 @@ public class Launcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene(1);
-    }
-
-    public void StartGameWithoutCinamatic()
-    {
-        SceneManager.LoadScene(2);
+        if(Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene(2);
     }
 }

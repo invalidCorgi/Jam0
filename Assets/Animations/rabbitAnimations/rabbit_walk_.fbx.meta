@@ -6,6 +6,33 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: Scene
+  - first:
+      74: -1158726129008117130
+    second: Scene (1)
+  - first:
+      74: -4454139077703410880
+    second: Scene (2)
+  - first:
+      74: 163946661222951639
+    second: Scene (3)
+  - first:
+      74: -2867762225416997021
+    second: Scene (4)
+  - first:
+      74: -1762091521222982064
+    second: Scene (5)
+  - first:
+      74: 1123765553479869685
+    second: Scene (6)
+  - first:
+      74: 96943370114488897
+    second: Scene (7)
+  - first:
+      74: -1874617657048896041
+    second: Scene (8)
+  - first:
+      74: 4252054958283613219
+    second: Scene (9)
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -24,7 +51,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
+    importAnimatedCustomProperties: 1
     importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
@@ -39,7 +66,7 @@ ModelImporter:
       takeName: Scene
       internalID: 0
       firstFrame: 1
-      lastFrame: 20
+      lastFrame: 6.5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

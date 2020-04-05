@@ -12,7 +12,7 @@ public class InteractionWithPlayer : MonoBehaviour
     void Start()
     {
         isInteractionPossible = false;
-        interactionDistance = 2.0f;
+        interactionDistance = 3.0f;
         player = GameObject.Find("Player");
     }
 

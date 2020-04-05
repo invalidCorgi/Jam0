@@ -61,6 +61,10 @@ public class CraftingManager : MonoBehaviour
 
     public void FinishCrafting()
     {
+        GameObject.Find("BackgroundRecipe1").GetComponent<FlashController>().SetPositive();
+        GameObject.Find("BackgroundRecipe2").GetComponent<FlashController>().SetPositive();
+        GameObject.Find("BackgroundResult").GetComponent<FlashController>().SetPositive();
+
         availableResources.Add(recipe.Result);
         UpdateProgressTextAndImage();
 
@@ -125,10 +129,13 @@ public class CraftingManager : MonoBehaviour
             {
                 ResourceImages[inventory.Count].sprite = Resources.Load<Sprite>("Textures\\UI\\ItemsUI\\check");
                 inventory.Add(resource);
+                GameObject.Find($"BackgroundRecipe{inventory.Count}").GetComponent<FlashController>().SetPositive();
             }
         }
         else
         {
+            GameObject.Find("InHandsBackground").GetComponent<FlashController>().SetNegative();
+            GameObject.Find("TimerBackground").GetComponent<FlashController>().SetNegative();
             timerObject.GetComponent<Timer>().effectiveRemainingTime -= 5;
         }
     }

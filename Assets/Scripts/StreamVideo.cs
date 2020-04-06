@@ -45,6 +45,10 @@ public class StreamVideo : MonoBehaviour
             }
             else if(SceneManager.GetActiveScene().name == "OutroScene")
             {
+                SceneManager.LoadScene(6);
+            }
+            else if (SceneManager.GetActiveScene().name == "Outro2Scene")
+            {
                 SceneManager.LoadScene(3);
             }
         }

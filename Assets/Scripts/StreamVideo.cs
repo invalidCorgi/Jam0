@@ -37,7 +37,7 @@ public class StreamVideo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!videoPlayer.isPlaying && stoppedPlaying == true)
+        if(Input.anyKeyDown || (!videoPlayer.isPlaying && stoppedPlaying == true))
         {
             if(SceneManager.GetActiveScene().name == "IntroScene")
             {
@@ -45,7 +45,7 @@ public class StreamVideo : MonoBehaviour
             }
             else if(SceneManager.GetActiveScene().name == "OutroScene")
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(3);
             }
         }
     }

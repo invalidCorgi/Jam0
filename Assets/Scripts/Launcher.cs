@@ -19,11 +19,16 @@ public class Launcher : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(4);
     }
 
     public void StartGameWithoutCinamatic()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
